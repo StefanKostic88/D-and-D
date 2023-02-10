@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="info-heading">
+      `${defender.name} has been attacked by ${attacker.name} with ${
+      attacker.ability }, damage dealt: ${attacker.useAttack()}`;
+    </h1>
+
+    <div class="wraper">
+      <div class="cards__container" id="monster-cards__container"></div>
+      <div class="cards__container" id="heroes-cards__container"></div>
+    </div>
+    <div class="btn-container">
+      <button data-attack="attack" data-turn="hero">Attack</button>
+      <button data-attack="special ability" data-turn="hero">
+        Special Ability
+      </button>
+    </div>
+
+    <audio controls>
+      <source
+        src="./ytmp3free.cc_gwent-ost-the-mighty-jarl-of-skellige-skellige-deck-theme-extended-version-youtubemp3free.org.mp3"
+        type="audio/ogg"
+      />
+    </audio>
+
+    <!-- <script src="./model.js"></script>
+    <script src="./app.js"></script> -->
+  </body>
+</html>
