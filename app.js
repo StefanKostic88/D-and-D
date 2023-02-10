@@ -23,8 +23,12 @@
 
   let heroIndex = 0;
   let monsterIndex = 0;
-  let maxHeroIndex = 2;
+  // let maxHeroIndex = 2;
+  let maxHeroIndex = 3;
   let maxMonsetrIndex = 2;
+  let heroArrayLength = app.heroesArr.length;
+  let curHerroArraylength;
+  let deletionINdex;
 
   btnContainer.addEventListener("click", function (e) {
     if (!chekIfvalid(e)) return;
@@ -34,8 +38,6 @@
 
     if (app.turns.heroTrun) {
       const attackingCard = app.findAttackingCard(app.heroesArr);
-      // console.log("cur card", attackingCard);
-      // console.log("cur hero index", heroIndex);
       app.switchActiveStatus(attackingCard);
       app.renderHeroes(app.heroesArr);
       app.updateDefnedingCards(app.monstersArr);
@@ -68,18 +70,18 @@
 
         /////////////////
 
-        // setTimeout(() => {
-        app.setMessage("Chose Type Of Attack");
-        app.renderMessage();
-        if (monsterIndex > maxMonsetrIndex) {
-          monsterIndex = 0;
-        }
+        setTimeout(() => {
+          app.setMessage("Chose Type Of Attack");
+          app.renderMessage();
+          if (monsterIndex > maxMonsetrIndex) {
+            monsterIndex = 0;
+          }
 
-        app.switchActiveStatus(app.monstersArr[monsterIndex]);
-        monsterIndex++;
+          app.switchActiveStatus(app.monstersArr[monsterIndex]);
+          monsterIndex++;
 
-        app.renderMonsters(app.monstersArr);
-        // }, 3500);
+          app.renderMonsters(app.monstersArr);
+        }, 3500);
 
         app.turns.heroTrun = !app.turns.heroTrun;
         app.turns.monsterTurn = !app.turns.monsterTurn;
@@ -127,7 +129,7 @@
           defendingCard.health = 0;
           defendingCard.isDefeated = true;
           maxHeroIndex--;
-          let deletionINdex;
+
           app.heroesArr.find((el, index) => {
             if (el.id === defendingCard.id) {
               deletionINdex = index;
@@ -137,6 +139,7 @@
           app.setMessage(`${defendingCard.name} Defeated`);
           app.renderMessage();
           app.renderHeroes(app.heroesArr);
+
           setTimeout(() => {
             app.heroesArr.splice(deletionINdex, 1);
             app.renderHeroes(app.heroesArr);
@@ -150,12 +153,29 @@
           app.setMessage("Chose Type Of Attack");
           app.renderMessage();
           3;
-          heroIndex++;
-          if (heroIndex > maxHeroIndex) {
-            heroIndex = 0;
-            console.log("heroindex", heroIndex);
+
+          // if (deletionINdex > heroIndex) {
+          //   heroIndex = deletionINdex - 1;
+          // }
+
+          // heroIndex++;
+          // if (deletionINdex < heroIndex) {
+          //   heroIndex = 0;
+          // }
+
+          // ako karta nije obrisana uradi ovo
+          console.log();
+          if (!deletionINdex) {
+            heroIndex++;
+            if (heroIndex > maxHeroIndex) {
+              heroIndex = 0;
+            }
+          } else {
+            heroIndex = getCorrectIndex(heroIndex, deletionINdex, maxHeroIndex);
           }
 
+          // curHerroArraylength = app.heroesArr.length;
+          console.log(heroIndex, "HETRO index");
           app.switchActiveStatus(app.heroesArr[heroIndex]);
           app.renderHeroes(app.heroesArr);
         }, 3500);
@@ -168,6 +188,31 @@
       heroesContainerEl.addEventListener("click", pickCardSecond);
     }
   });
+
+  const getCorrectIndex = function (curIndex, deltedIndex, maxIndex) {
+    let resIndex = curIndex;
+    console.log(curIndex, deltedIndex, maxIndex, "FUNC");
+    if (deltedIndex > curIndex) {
+      resIndex = deltedIndex - 2;
+    }
+    console.log(resIndex);
+    if (curIndex >= maxIndex) {
+      resIndex = 0;
+    }
+
+    resIndex++;
+    if (deltedIndex > maxIndex && resIndex === 0) {
+      resIndex = 0;
+    }
+    if (deltedIndex === maxIndex) {
+      resIndex = 1;
+    }
+    if (deltedIndex < resIndex || curIndex > maxIndex) {
+      resIndex = 0;
+    }
+
+    return resIndex;
+  };
 })(model);
 
 // const calcPercent = (curVal, decVal) => (curVal - decVal) / curVal;

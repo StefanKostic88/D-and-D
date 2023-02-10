@@ -134,10 +134,11 @@ const model = (function () {
       this.ability = ability;
       this.img =
         // "https://images.pexels.com/photos/339805/pexels-photo-339805.jpeg?auto=compress&cs=tinysrgb&w=1600";
-        "./the-witcher-3-wild-hunt-everything-you-need-to-kno_6m95.1200.jpg";
+        "./img/warrior-img.jpg";
       //hp 120
       // abilty second wind
     }
+
     useAttack() {
       return 20;
     }
@@ -156,8 +157,8 @@ const model = (function () {
       super(name, health);
       this.weapon = weapon;
       this.ability = ability;
-      this.img =
-        "https://images.pexels.com/photos/547593/pexels-photo-547593.jpeg?auto=compress&cs=tinysrgb&w=1600";
+      this.img = " ./img/mage-image.jpg";
+
       // hp 100
     }
     useAttack() {
@@ -184,8 +185,7 @@ const model = (function () {
       super(name, health);
       this.weapon = weapon;
       this.ability = ability;
-      this.img =
-        "https://images.pexels.com/photos/3359734/pexels-photo-3359734.jpeg?auto=compress&cs=tinysrgb&w=1600";
+      this.img = "./img/lechen-img.jpg";
 
       //Fire Breath
       //hp 150
@@ -205,8 +205,7 @@ const model = (function () {
       super(name, health);
       this.weapon = weapon;
       this.ability = ability;
-      this.img =
-        "https://images.pexels.com/photos/762876/pexels-photo-762876.jpeg?auto=compress&cs=tinysrgb&w=1600";
+      this.img = "./img/warewolf-img.jpg";
       //Venomus Touch
       //hp 100
     }
@@ -226,24 +225,28 @@ const model = (function () {
   }
 
   const app = new App();
-  // const warrior = new Warrior("Warrior", 120, "Sword", "Second Wind");
-  const warrior = new Warrior("Warrior", 1, "Sword", "Second Wind");
+  const warrior = new Warrior("Warrior", 120, "Sword", "Second Wind");
   warrior.activeStatus = true;
-  // const warrior2 = new Warrior("Second Warrior", 120, "Sword", "Second Wind");
-  const warrior2 = new Warrior("Temp Warrior", 10, "Test Sword", "Test Wind");
-  // const mage = new Mage("Mage", 100, "Spell", "Shock");
-  const mage = new Mage("Mage", 5, "Spell", "Shock");
+  const warrior2 = new Warrior("Second Warrior", 120, "Sword", "Second Wind");
+  const mage = new Mage("Mage", 100, "Spell", "Shock");
+  const mage2 = new Mage("Mage2", 100, "Spell", "Shock");
+  /////
+
   const dragon = new Dragon("Dragon", 150, "Claw Strike", "Fire Breath");
-  // const spider = new Spider("Spider", 100, "Sting", "Venomus Touch");
-  const spider = new Spider("Spider", 1, "Sting", "Venomus Touch");
+  const spider = new Spider("Spider", 100, "Sting", "Venomus Touch");
+  // const spider = new Spider("Spider", 1, "Sting", "Venomus Touch");
   const spider2 = new Spider("Second Spider", 100, "Sting", "Venomus Touch");
+  const dragon2 = new Dragon("Dragon", 150, "Claw Strike", "Fire Breath");
 
   app.addNewHero(warrior);
   app.addNewHero(warrior2);
   app.addNewHero(mage);
+  app.addNewHero(mage2);
+
   app.addNewMonster(dragon);
   app.addNewMonster(spider);
   app.addNewMonster(spider2);
+  // app.addNewMonster(dragon2);
 
   return {
     app,
