@@ -1,0 +1,231 @@
+:root {
+  --health-bar: 100%;
+}
+
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  background-color: #34495e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  /* position: relative; */
+}
+span {
+  display: block;
+}
+.info-heading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  font-size: 2.5rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 26px 0;
+  margin: 0;
+  z-index: 1;
+}
+.wraper {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+}
+.cards__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.card {
+  /* margin: 40px; */
+  /* position: relative; */
+  max-width: 280px;
+  max-height: 250px;
+  /* max-height: 350px; */
+  /* max-height: 300px; */
+  /* max-height: 350px; */
+  /* max-width: 350px;
+  min-height: 400px; */
+  box-shadow: 0 40px 60px -6px black;
+  position: relative;
+  /* transform: scale(1); */
+}
+.inactive::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  width: 100%;
+  height: 140%;
+  background-color: rgba(0, 0, 0, 0.349);
+  z-index: 1;
+}
+.card.active {
+  animation-duration: 2000ms;
+  animation-name: scaleup;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+.card.remove-card {
+  animation-duration: 3500ms;
+  animation-name: removeFromDeck;
+  animation-fill-mode: forwards;
+}
+@keyframes scaleup {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+.defeated {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 140%;
+  border-radius: 10px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  /* animation-duration: 2500ms;
+  animation-name: removeFromDeck;
+  animation-fill-mode: forwards; */
+}
+
+.defeated > h2 {
+  color: #fff;
+  font-size: 50px;
+  transform: rotate(45deg);
+  letter-spacing: 2px;
+}
+
+@keyframes removeFromDeck {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.card-title {
+  /* display: block; */
+  text-align: center;
+  color: #fff;
+  /* background-color: #6184a8; */
+  background-color: rgb(31, 31, 31);
+  padding: 2%;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* position: relative; */
+}
+
+/* .card-desc {
+  display: block;
+  font-size: 1.2rem;
+  position: absolute;
+  height: 0;
+  top: 0;
+  opacity: 0;
+  padding: 18px 8%;
+  background-color: white;
+  overflow-y: scroll;
+  transition: 0.8s ease;
+} */
+
+.health-container {
+  background-color: rgb(31, 31, 31);
+  width: 100%;
+  position: absolute;
+  bottom: -40%;
+  left: 0;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.health-status {
+  width: var(--health-bar);
+  text-align: center;
+  background-color: #951e1e;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.btn-container {
+  /* background-color: rgb(31, 31, 31); */
+  background-color: black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  min-height: 80px;
+  gap: 50px;
+}
+.btn-container button {
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  background-color: transparent;
+  font-size: 24px;
+  box-shadow: 0 0 0 1px red;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: box-shadow 500ms ease-in-out, transform 300ms ease;
+}
+.btn-container button:hover {
+  box-shadow: 0 0 20px 5px red;
+}
+.btn-container button:focus {
+  outline: none;
+  transform: scale(1.05);
+}
+
+.attack-description {
+  display: block;
+  font-size: 1.2rem;
+  position: absolute;
+  /* height: 0; */
+  height: 0;
+  top: -10px;
+  opacity: 0;
+  padding: 18px 8%;
+  background-color: #fff;
+
+  /* overflow-y: scroll; */
+  transition: 0.8s ease;
+}
+
+/* .attack-btn:hover {
+} */
+/* opacity: 1;
+  height: 100%; */
+/* when hovered add class with these props */
